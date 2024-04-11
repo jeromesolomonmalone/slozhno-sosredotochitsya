@@ -227,7 +227,7 @@
     font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
   }
 
-  .header__subtitle {
+  .header__paragraph {
     max-inline-size: 50%;
   }
 
@@ -293,7 +293,7 @@
     grid-template: 1fr / repeat(3, 1fr);
   }
 
-  .header__subtitle {
+  .header__paragraph {
     max-inline-size: 50%;
   }
 
