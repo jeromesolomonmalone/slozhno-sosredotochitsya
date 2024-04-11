@@ -1,5 +1,315 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 
 .page {
+  padding: 0 var(--page-padding);
+  color: var(--paragraph-color, #f1b2ce);
+  font-family: var(--main-font, sans-serif);
+  font-size: var(--main-font-size);
+  line-height: 23.4px;
+  background: url(../images/cover-image.png) center/cover no-repeat;
+  background-attachment: fixed;
+  min-inline-size: 375px;
   /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
+}
+.header {
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr auto 1fr;
+  padding: var(--page-padding) 0;
+  min-block-size: 668px;
+  block-size: 100vh;
+}
+
+.decorated-zone::before {
+  content: "";
+  position: absolute;
+  top: var(--page-padding);
+  right: 0;
+  display: block;
+  border-inline-end: 1px solid var(--text-color);
+  border-block-start: 1px solid var(--text-color);
+  inline-size: 25px;
+  block-size: 25px;
+}
+
+.decorated-zone::after {
+  content: "";
+  position: absolute;
+  bottom: var(--page-padding);
+  left: 0;
+  display: block;
+  border-inline-start: 1px solid var(--text-color);
+  border-block-end: 1px solid var(--text-color);
+  inline-size: 25px;
+  block-size: 25px;
+}
+
+.header__theme-menu {
+  justify-self: end;
+  align-self: center;
+  inline-size: max-content;
+}
+
+.header__theme-menu-list {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.header__theme-menu-button {
+  border: none;
+  padding: 1.5px 13px;
+  color: var(--text-color);
+  line-height: 18px;
+  text-align: center;
+  text-transform: lowercase;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.header__theme-menu-button:hover {
+  outline: 1px solid var(--border-hover);
+}
+
+.header__theme-menu-button,
+.content__text-block__list__item-link:focus {
+  outline: 0;
+}
+
+.header__theme-menu-button:focus-visible {
+  border-block-end: 1px solid var(--accent-color);
+}
+
+.header__theme-menu-button_active {
+  border: 1px solid currentColor;
+  pointer-events: none;
+}
+
+.header__title {
+  justify-self: start;
+  align-self: center;
+  color: var(--title-color);
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  line-height: 96px;
+  text-shadow: 4px 4px 0 var(--accent-color);
+}
+
+.header__paragraph {
+  justify-self: end;
+  align-self: center;
+  font-weight: var(--title-font-weight);
+  block-size: content;
+  max-inline-size: 364px;
+}
+
+.title-decor {
+  color: var(--subtitle-color);
+  background-color: var(--accent-color);
+}
+
+.header__lamp::before {
+  content: "REC";
+  position: absolute;
+  top: var(--page-padding);
+  right: 28px;
+  display: block;
+  color: var(--accent-color);
+  line-height: 25px;
+}
+
+.header__lamp::after {
+  content: "";
+  position: absolute;
+  top: calc(var(--page-padding) + 8px);
+  right: 9px;
+  display: block;
+  border-radius: 9px;
+  box-shadow: 0px 0px 4px 2px var(--accent-color);
+  background-color: var(--accent-color);
+  inline-size: 9px;
+  block-size: 9px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  margin: var(--content-margin) 0;
+}
+
+.content__text-block {
+  display: grid;
+  gap: 20px;
+}
+
+.content__text-block__title {
+  color: var(--text-color);
+  font-size: var(--main-font-size);
+}
+
+.content__text-block__list__item-title {
+  margin-block-end: 10px;
+  font-size: var(--main-font-size);
+}
+
+.content__text-block__list {
+  display: grid;
+  gap: 20px;
+}
+
+.content__text-block__list__item-link {
+  text-decoration: none;
+  text-shadow: 2px 2px 0 var(--accent-color);
+}
+
+.content__text-block__list__item-link:hover {
+  border-block-end: 1px solid currentColor;
+}
+
+.content__text-block__list__item-link:focus-visible {
+  outline: 1px solid currentColor;
+}
+
+.content__text-block__subtitle,
+.content__gallery__title {
+  font-size: var(--main-font-size);
+}
+
+.title-weight {
+  font-weight: var(--main-font-weight);
+}
+
+.content__gallery {
+  display: grid;
+  gap: var(--gap-gallery);
+}
+
+.content__gallery__picture {
+  display: block;
+  inline-size: 100%;
+}
+
+.footer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--page-padding) 0;
+  min-block-size: 668px;
+  block-size: 100vh;
+}
+
+.footer__title {
+  color: var(--title-color);
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  text-shadow: 2px 2px 0 var(--accent-color);
+}
+
+@media (768px <= width) {
+  :root {
+    --page-padding: 20px;
+    --content-margin: 60px;
+    --gap: 80px;
+    --gap-gallery: 20px;
+  }
+
+  .header,
+  .footer {
+    min-block-size: 1024px;
+  }
+
+  .header__title {
+    margin-inline-start: -20px;
+  }
+
+  .header__title,
+  .footer__title {
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+
+  .header__subtitle {
+    max-inline-size: 50%;
+  }
+
+  .content__text-block__why-is-it-difficult {
+    grid-template: 1fr / 1fr 65%;
+  }
+
+  .content__text-block__what-reduces__title {
+    max-inline-size: 30%;
+  }
+
+  .content__text-block__recommendations {
+    grid-template: repeat(2, auto) / 1fr 65%;
+  }
+
+  .content__text-block__recommendations .content__text-block__title {
+    grid-row: span 2;
+  }
+
+  .content__gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .content__gallery__picture {
+    object-fit: cover;
+    object-position: center;
+    block-size: 100%;
+  }
+
+  .content__gallery__title {
+    grid-column: span 3;
+  }
+
+  .sunset {
+    grid-column: span 2;
+  }
+
+  .ice-cream {
+    grid-row: span 2;
+  }
+
+  .tape {
+    grid-row: span 2;
+  }
+
+  .street {
+    grid-column: span 2;
+  }
+}
+
+@media (1024px <= width) {
+  .header,
+  .footer {
+    min-block-size: 768px;
+  }
+
+  .header__theme-menu {
+    justify-self: center;
+    align-self: start;
+  }
+
+  .header__theme-menu-list {
+    grid-template: 1fr / repeat(3, 1fr);
+  }
+
+  .header__subtitle {
+    max-inline-size: 50%;
+  }
+
+  .content__text-block__why-is-it-difficult {
+    grid-template: 1fr / 1fr 66%;
+  }
+
+  .content__text-block__what-reduces__title {
+    max-inline-size: 34%;
+  }
+
+  .content__text-block__what-reduces__list {
+    grid-template: 1fr / repeat(3, 1fr);
+  }
+
+  .content__text-block__recommendations {
+    grid-template: repeat(2, auto) / 1fr 66%;
+  }
 }
